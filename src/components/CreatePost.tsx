@@ -17,8 +17,10 @@ export default function CreatePost() {
   const [isPosting, setIsPosting] = useState(false);
   const [showImageUpload, setShowImageUpload] = useState(false);
 
+  // 提交帖子
   const handleSubmit = async () => {
     if (!content.trim() && !imageUrl) return;
+    setIsPosting(true);
     try {
       const result = await createPost(content, imageUrl);
       if (result.success) {
@@ -28,6 +30,7 @@ export default function CreatePost() {
         toast.success("Post created successfully");
       }
     } catch (error) {
+      toast.error("Failed to create post");
     } finally {
       setIsPosting(false);
     }

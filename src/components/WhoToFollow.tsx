@@ -23,7 +23,7 @@ export default async function WhoToFollow() {
               <div className="flex items-center gap-1">
                 <Link href={`/profile/${user.username}`}>
                   <Avatar>
-                    <AvatarImage src={user.image ?? "/avatar.png"} />
+                    <AvatarImage src={user.image ? user.image : "/avatar.png"} />
                   </Avatar>
                 </Link>
                 <div className="text-xs">
@@ -39,7 +39,7 @@ export default async function WhoToFollow() {
                   </p>
                 </div>
               </div>
-              {/* <FollowButton userId={user.id} /> */}
+              <FollowButton userId={user.id} />
             </div>
           ))}
         </div>

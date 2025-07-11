@@ -27,3 +27,6 @@ export async function createPost(content: string, image: string) {
     };
   }
 }
+
+export async function getPosts() {
+}

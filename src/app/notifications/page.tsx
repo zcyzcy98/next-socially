@@ -8,6 +8,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatDistanceToNow } from "date-fns";
+import { HeartIcon, MessageCircleIcon, UserPlusIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -37,6 +38,19 @@ export default function NotificationsPage() {
     fetchNotifications();
   }, []);
 
+  const getNotificationIcon = (type: string) => {
+    switch (type) {
+      case "LIKE":
+        return <HeartIcon className="size-4 text-red-500" />;
+      case "COMMENT":
+        return <MessageCircleIcon className="size-4 text-blue-500" />;
+      case "FOLLOW":
+        return <UserPlusIcon className="size-4 text-green-500" />;
+      default:
+        return null;
+    }
+  };
+  
   if (isLoading) return <NotificationsSkeleton />;
   return (
     <div className="space-y-4">
@@ -70,7 +84,7 @@ export default function NotificationsPage() {
                   </Avatar>
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center gap-2">
-                      {/* {getNotificationIcon(notification.type)} */}
+                      {getNotificationIcon(notification.type)}
                       <span>
                         <span className="font-medium">
                           {notification.creator.name ??

@@ -6,7 +6,6 @@ import { getRandomUsers } from "@/actions/user.action";
 
 export default async function WhoToFollow() {
   const users = await getRandomUsers();
-  console.log(users);
   if (users.length === 0) return null;
   return (
     <Card>

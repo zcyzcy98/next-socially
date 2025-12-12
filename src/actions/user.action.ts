@@ -10,7 +10,6 @@ export async function syncUser() {
     const user = await currentUser();
 
     if (!userId || !user) return;
-
     //check if user exists
     const existingUser = await prisma.user.findUnique({
       where: {

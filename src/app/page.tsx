@@ -4,6 +4,7 @@ import { getDbUserId } from "@/actions/user.action";
 import CreatePost from "@/components/CreatePost";
 import HotNewsCard from "@/components/HotNewsCard";
 import PostCard from "@/components/PostCard";
+import SearchCard from "@/components/SearchCard";
 import WhoToFollow from "@/components/WhoToFollow";
 import { currentUser } from "@clerk/nextjs/server";
 
@@ -28,10 +29,11 @@ export default async function Home() {
         </div>
       </div>
       <div className="lg:col-span-4">
-        <div className="hidden lg:block lg:col-span-4 sticky top-20">
+        <SearchCard />
+        <div className="hidden lg:block lg:col-span-4 mt-[10px]">
           <WhoToFollow />
         </div>
-        <div className="hidden lg:block lg:col-span-4 sticky top-20">
+        <div className="hidden lg:block lg:col-span-4 mt-[10px]">
           <HotNewsCard hotNews={hotNews} />
         </div>
       </div>

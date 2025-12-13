@@ -20,7 +20,7 @@ export default function SearchCard({ q }: { q?: string }) {
     }
   };
   return (
-    <div className="w-full">
+    <div>
       <InputGroup>
         <InputGroupInput
           className="focus-visible:ring-offset-0"

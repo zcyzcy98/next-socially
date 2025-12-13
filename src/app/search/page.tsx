@@ -3,6 +3,7 @@ import { getDbUserId } from "@/actions/user.action";
 import PostCard from "@/components/PostCard";
 import SearchCard from "@/components/SearchCard";
 import { currentUser } from "@clerk/nextjs/server";
+import BackButton from "@/components/searchPage/BackButton";
 
 type Posts = Awaited<ReturnType<typeof getPostsByKeyWords>>;
 type Post = Posts[number];
@@ -23,8 +24,13 @@ export default async function Page({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 ">
       <div className="lg:col-span-6">
-        <div className="w-full pb-4 flex items-center justify-center">
-          <SearchCard q={q} />
+        <div className="w-full pb-4 flex items-center justify-between">
+         <div className="w-[20%]">
+          <BackButton />
+         </div>
+          <div className="w-[78%]">
+            <SearchCard q={q} />
+          </div>
         </div>
         <div className="space-y-6">
           {posts.map((post: Post) => {
